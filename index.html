@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeQR - Generador de Códigos QR</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-qr-code"></i> MakeQR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#generator">Generador</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Características</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="generator">
+        <div class="container">
+            <div class="stats-badge">
+                <i class="bi bi-lightning-charge-fill"></i> Gratis · Sin límites · Instantáneo
+            </div>
+            <h1 class="hero-title">Genera Códigos QR Profesionales</h1>
+            <p class="hero-subtitle">Crea, personaliza y descarga códigos QR en segundos</p>
+        </div>
+    </section>
+
+    <section class="generator-section pb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <div class="generator-card">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-2">Crea tu código QR</h2>
+                            <p class="text-muted">Personaliza cada detalle a tu gusto</p>
+                        </div>
+
+                        <form id="qr-form">
+                            <div class="mb-4">
+                                <label for="link-input" class="form-label">
+                                    <i class="bi bi-link-45deg"></i> URL o Texto
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="link-input" 
+                                    placeholder="https://tuwebsite.com"
+                                    required
+                                >
+                                <div class="invalid-feedback">
+                                    Por favor ingresa una URL o texto válido
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="qr-size" class="form-label">
+                                    <i class="bi bi-arrows-angle-expand"></i> Tamaño del QR
+                                </label>
+                                <select class="form-select" id="qr-size">
+                                    <option value="200">Pequeño (200x200)</option>
+                                    <option value="300" selected>Mediano (300x300)</option>
+                                    <option value="400">Grande (400x400)</option>
+                                    <option value="500">Extra Grande (500x500)</option>
+                                </select>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="color-dark" class="form-label">
+                                        <i class="bi bi-palette-fill"></i> Color del QR
+                                    </label>
+                                    <div class="color-picker-wrapper">
+                                        <input type="text" class="form-control" id="color-dark-display" value="#000000" readonly>
+                                        <input type="color" id="color-dark" value="#000000">
+                                        <div class="color-preview" id="preview-dark" style="background-color: #000000;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="color-light" class="form-label">
+                                        <i class="bi bi-paint-bucket"></i> Color de Fondo
+                                    </label>
+                                    <div class="color-picker-wrapper">
+                                        <input type="text" class="form-control" id="color-light-display" value="#FFFFFF" readonly>
+                                        <input type="color" id="color-light" value="#FFFFFF">
+                                        <div class="color-preview" id="preview-light" style="background-color: #FFFFFF;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">
+                                    <i class="bi bi-stars"></i> Presets de Colores
+                                </label>
+                                <div class="color-presets">
+                                    <button type="button" class="preset-btn" data-dark="#000000" data-light="#FFFFFF">
+                                        <span style="background: #000000;"></span>
+                                        <span style="background: #FFFFFF;"></span>
+                                    </button>
+                                    <button type="button" class="preset-btn" data-dark="#6a0dad" data-light="#f0e6ff">
+                                        <span style="background: #6a0dad;"></span>
+                                        <span style="background: #f0e6ff;"></span>
+                                    </button>
+                                    <button type="button" class="preset-btn" data-dark="#1e3a8a" data-light="#dbeafe">
+                                        <span style="background: #1e3a8a;"></span>
+                                        <span style="background: #dbeafe;"></span>
+                                    </button>
+                                    <button type="button" class="preset-btn" data-dark="#047857" data-light="#d1fae5">
+                                        <span style="background: #047857;"></span>
+                                        <span style="background: #d1fae5;"></span>
+                                    </button>
+                                    <button type="button" class="preset-btn" data-dark="#dc2626" data-light="#fee2e2">
+                                        <span style="background: #dc2626;"></span>
+                                        <span style="background: #fee2e2;"></span>
+                                    </button>
+                                    <button type="button" class="preset-btn" data-dark="#ea580c" data-light="#ffedd5">
+                                        <span style="background: #ea580c;"></span>
+                                        <span style="background: #ffedd5;"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-generate" id="generate-btn">
+                                    <i class="bi bi-magic"></i> Generar Código QR
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="qr-preview-section" id="qr-preview">
+                            <h3 class="fw-bold mb-3">
+                                <i class="bi bi-check-circle-fill text-success"></i> ¡Tu código QR está listo!
+                            </h3>
+                            <div class="qr-canvas-wrapper">
+                                <canvas id="qr-canvas"></canvas>
+                            </div>
+                            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                                <a href="#" id="qr-download" class="btn-download">
+                                    <i class="bi bi-download"></i> Descargar PNG
+                                </a>
+                                <button type="button" class="btn btn-outline-secondary" onclick="location.reload()">
+                                    <i class="bi bi-arrow-repeat"></i> Generar Otro
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">¿Por qué elegir MakeQR?</h2>
+                <p class="fs-5">La forma más rápida y fácil de crear códigos QR profesionales</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Súper Rápido</h3>
+                        <p>Genera códigos QR en menos de un segundo. Sin esperas, sin complicaciones.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Totalmente Personalizable</h3>
+                        <p>Elige colores, tamaños y usa presets predefinidos para crear el QR perfecto.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>100% Privado</h3>
+                        <p>Todo se procesa en tu navegador. Tus datos nunca salen de tu dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">Hecho con <i class="bi bi-heart-fill text-danger"></i> por MakeQR</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
